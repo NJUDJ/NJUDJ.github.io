@@ -1,53 +1,79 @@
-// 以后主要修改这个文件。文字写在引号中，每一项后保留逗号。
-window.BLOG = {
-  name: "小小茶室",
-  description: "记录学习、写作和日常里的小事。\n在匆忙的世界里，留一个慢慢说话的地方。",
-  about: "这里是我的个人小站。分享一些读过的书、学到的东西，以及值得记住的普通日子。欢迎你来坐坐。",
-  // 改成你的实际建站时间；+08:00 表示北京时间。
+// 修改文字主要看这个文件。引号中填文字；每一项后面的逗号请保留。
+window.PROFILE = {
+  name: "个人主页",
+  handle: "NJUDJ",
+  initials: "NJ",
+  description: "项目实践、实习经历与科研探索。\n在这里整理经历，记录每一步成长。",
+  about: "这里展示我的项目、实习与科研经历，更多内容将陆续补充。",
   startTime: "2026-10-09T00:00:00+08:00",
-  // 有 GitHub 账号后，改成 https://github.com/你的用户名
-  github: "https://github.com",
-  // 以下是示例文章。修改或删除示例，再添加自己的内容。
-  posts: [
+  github: "https://github.com/NJUDJ",
+
+  // 目前各栏目都是明确标注的占位内容，不代表真实经历。
+  // 填好一条经历后，把 placeholder 改为 false。
+  // 每个 items 数组中可以添加更多 { ... }，每条 id 应保持唯一。
+  sections: [
     {
-      id: "first-page", // 每篇文章的 id 不要重复；收藏用它识别文章。
-      title: "给自己留一间小小茶室",
-      date: "2026-10-09",
-      tag: "日常",
-      excerpt: "从一张空白的网页开始，把那些转瞬即逝的想法，慢慢写下来。",
-      paragraphs: [
-        "这是一篇示例文章，你可以把它改成自己的第一篇。",
-        "一直想找一个地方，放下读书时的随手记、学习时踩过的坑，还有生活里细碎的小事。于是，这间小小茶室就有了第一张桌子。",
-        "不必等到一切都准备好。先写下今天，明天再添一笔。",
+      id: "projects", title: "项目", english: "PROJECTS", icon: "project",
+      intro: "从想法到实现，记录做过的事。",
+      items: [
+        {
+          id: "project-01",
+          title: "项目名称待填写",
+          organization: "项目方向 / 担任角色",
+          period: "起止时间待填写",
+          summary: "这里将展示项目背景、负责的工作，以及最终实现的成果。",
+          tags: ["项目实践", "个人贡献"],
+          placeholder: true,
+          details: [
+            { heading: "项目背景", text: "待填写：这个项目要解决什么问题，面向哪些用户或场景。" },
+            { heading: "我的工作", text: "待填写：自己负责的部分，采用的方法、工具或技术。" },
+            { heading: "项目成果", text: "待填写：实际完成的成果，以及可以公开展示的作品或数据。" },
+          ],
+          url: "", // 可填写作品或代码仓库的 https 链接；留空则不显示按钮。
+        },
       ],
     },
     {
-      id: "learning-notes",
-      title: "学习笔记，也可以写得轻一点",
-      date: "2026-10-08",
-      tag: "学习",
-      excerpt: "不用把每一页都写成教科书。一个问题、一次尝试、一个真正理解的瞬间，就够了。",
-      paragraphs: [
-        "这是一篇学习笔记示例，后续可以替换成你的实际记录。",
-        "我想试试一种简单的记录方式：先写遇到了什么问题，再写尝试了什么，最后写下这次真正弄懂的一件事。",
-        "当笔记足够具体，下一次遇到类似的问题，就能沿着自己留下的路走过去。",
+      id: "internships", title: "实习", english: "INTERNSHIPS", icon: "work",
+      intro: "在真实场景中学习与积累。",
+      items: [
+        {
+          id: "internship-01",
+          title: "实习单位与岗位待填写",
+          organization: "部门 / 岗位方向",
+          period: "起止时间待填写",
+          summary: "这里将展示实习期间的主要职责、参与的工作和实践收获。",
+          tags: ["工作职责", "实践收获"],
+          placeholder: true,
+          details: [
+            { heading: "岗位与团队", text: "待填写：单位、部门、岗位，以及实习起止时间。" },
+            { heading: "工作内容", text: "待填写：参与的具体工作、承担的职责和解决的问题。" },
+            { heading: "成果与收获", text: "待填写：可以公开的工作成果，以及获得的经验与能力。" },
+          ],
+          url: "",
+        },
       ],
     },
     {
-      id: "reading-notes",
-      title: "把喜欢的句子，留在这里",
-      date: "2026-10-07",
-      tag: "阅读",
-      excerpt: "有时读完一本书，留下的不是完整的故事，而是某个让人停下来想一想的念头。",
-      paragraphs: [
-        "这是一篇阅读记录示例。你可以记录书名、作者、读后感，以及自己的理解。",
-        "记录不必很长。写清楚为什么这一页打动了你，已经是一份有意义的读书笔记。",
+      id: "research", title: "科研", english: "RESEARCH", icon: "research",
+      intro: "提出问题，探索方法，积累发现。",
+      items: [
+        {
+          id: "research-01",
+          title: "研究课题待填写",
+          organization: "研究方向 / 所属团队",
+          period: "起止时间待填写",
+          summary: "这里将展示研究问题、采用的方法，以及自己的贡献与阶段成果。",
+          tags: ["研究方法", "阶段成果"],
+          placeholder: true,
+          details: [
+            { heading: "研究问题", text: "待填写：研究方向、核心问题与课题背景。" },
+            { heading: "研究方法", text: "待填写：采用的方法、实验过程及自己承担的工作。" },
+            { heading: "研究成果", text: "待填写：实际取得的阶段成果、论文、报告或开源材料。" },
+          ],
+          url: "",
+        },
       ],
     },
-  ],
-  // 下面放的是可访问的资源链接，后续替换成朋友的网站。
-  friends: [
-    { name: "GitHub", initial: "G", description: "保存代码，也给自己的小站一个落脚点。", url: "https://github.com" },
-    { name: "GitHub Pages 文档", initial: "P", description: "了解网站发布、自定义域名和 Pages 设置。", url: "https://docs.github.com/en/pages" },
   ],
 };
