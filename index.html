@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#dceaff">
-  <meta name="description" content="个人主页：项目实践、实习经历与科研探索。">
+  <meta name="theme-color" content="#edf3f9">
+  <meta name="description" content="个人主页：项目、实习与科研记录。">
   <title>个人主页</title>
-  <link rel="stylesheet" href="./style.css?v=2">
-  <script defer src="./content.js?v=2"></script>
-  <script defer src="./script.js?v=2"></script>
+  <link rel="stylesheet" href="./style.css?v=3">
+  <script defer src="./content.js?v=3"></script>
+  <script defer src="./script.js?v=3"></script>
 </head>
 <body>
   <svg class="svg-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -24,68 +24,50 @@
 
   <div class="site-shell" id="home">
     <header class="topbar">
-      <a class="brand" href="#home"><span class="brand-dot"></span><span data-site-name>个人主页</span></a>
-      <span class="topbar-note">项目 · 实习 · 科研</span>
+      <a class="brand" href="#home" aria-label="返回首页"><span id="profile-handle">NJUDJ</span><span class="brand-slash" aria-hidden="true">/</span></a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="#home" data-nav="home">首页</a>
+        <a href="#projects" data-nav="projects">项目</a>
+        <a href="#internships" data-nav="internships">实习</a>
+        <a href="#research" data-nav="research">科研</a>
+        <a href="#search" data-nav="search">搜索</a>
+      </nav>
     </header>
     <main>
-      <section class="hero glass" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">PERSONAL PORTFOLIO</p>
-          <h1 id="hero-title">个人主页</h1>
-          <p id="site-description" class="hero-description"></p>
-          <div class="hero-actions">
-            <a class="primary-link" href="#projects">浏览我的经历 <svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
-            <a class="text-link" href="#about">关于我</a>
-          </div>
-        </div>
-        <div class="profile-art" aria-hidden="true">
-          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-          <div class="profile-tile"><span class="profile-monogram" id="profile-monogram">NJ</span><span class="profile-handle" id="profile-handle">NJUDJ</span><span class="profile-caption">LEARN · BUILD · EXPLORE</span></div>
-          <span class="floating-icon project-orbit"><svg><use href="#icon-project"/></svg></span>
-          <span class="floating-icon research-orbit"><svg><use href="#icon-research"/></svg></span>
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="hero-kicker">你好，欢迎来访。</p>
+        <h1 id="hero-title">个人主页</h1>
+        <p id="site-description" class="hero-description"></p>
+        <div class="hero-actions">
+          <a class="text-link" href="#about">关于我</a>
+          <a id="github-link" class="text-link" href="https://github.com/NJUDJ" target="_blank" rel="noopener noreferrer" aria-label="访问我的 GitHub">GitHub <span aria-hidden="true">↗</span></a>
         </div>
       </section>
 
-      <section id="search-panel" class="search-panel glass" aria-labelledby="search-title" hidden>
-        <div class="search-heading"><div><p class="eyebrow">EXPLORE MY EXPERIENCE</p><h2 id="search-title">搜索经历</h2></div><button id="close-search" class="icon-button" type="button" aria-label="关闭搜索"><svg><use href="#icon-close"/></svg></button></div>
+      <section id="search-panel" class="search-panel" aria-labelledby="search-title" hidden>
+        <div class="search-heading"><h2 id="search-title">站内搜索</h2><button id="close-search" class="icon-button" type="button" aria-label="关闭搜索"><svg><use href="#icon-close"/></svg></button></div>
         <label class="sr-only" for="search-input">搜索项目、实习或科研</label>
-        <div class="input-wrap"><svg aria-hidden="true"><use href="#icon-search"/></svg><input id="search-input" type="search" placeholder="搜索项目、实习、科研或关键词…" autocomplete="off"></div>
+        <div class="input-wrap"><svg aria-hidden="true"><use href="#icon-search"/></svg><input id="search-input" type="search" placeholder="输入关键词" autocomplete="off"></div>
         <div id="search-filters" class="search-filters" aria-label="选择经历类型"></div>
         <p id="search-status" class="search-status" role="status"></p>
       </section>
-
       <div id="resume-sections"></div>
-      <p id="empty-message" class="empty-message glass" hidden>没有找到相关经历，换一个关键词试试。</p>
+      <p id="empty-message" class="empty-message" hidden>没有找到相关内容，换个关键词试试。</p>
 
-      <section class="about-card glass" id="about" aria-labelledby="about-title">
-        <div class="avatar" id="about-initials" aria-hidden="true">NJ</div>
-        <div class="about-copy"><p class="eyebrow">ABOUT ME</p><h2 id="about-title">关于我</h2><p id="about-text"></p></div>
-        <a id="about-github" class="text-link" href="https://github.com/NJUDJ" target="_blank" rel="noopener noreferrer">GitHub <svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+      <section class="about-card" id="about" aria-labelledby="about-title">
+        <div class="about-heading"><h2 id="about-title">关于我</h2></div>
+        <div class="about-copy"><p id="about-text"></p><a id="about-github" class="text-link" href="https://github.com/NJUDJ" target="_blank" rel="noopener noreferrer">在 GitHub 找到我 <span aria-hidden="true">↗</span></a></div>
       </section>
-      <footer class="site-footer">
-        <p class="footer-motto">在实践中积累，在探索中成长。</p>
-        <p id="uptime" class="uptime" aria-label="网站运行时间"></p>
-        <div class="footer-bottom"><span>© <span id="copyright-year"></span> <span data-site-name>个人主页</span></span><button id="theme-toggle" type="button"><span class="theme-dot"></span><span id="theme-label">切换深蓝</span></button></div>
-        <p class="tech-line">HTML · CSS · JavaScript · GitHub Pages</p>
-      </footer>
     </main>
+    <footer class="site-footer">
+      <div class="footer-main"><span>© <span id="copyright-year"></span> <span data-site-name>个人主页</span></span><button id="theme-toggle" type="button"><span class="theme-dot" aria-hidden="true"></span><span id="theme-label">切换深蓝</span></button></div>
+      <div class="footer-note"><span id="uptime"></span><span>GitHub Pages</span></div>
+    </footer>
   </div>
-
-  <nav class="dock" aria-label="主导航">
-    <div class="dock-links glass">
-      <a href="#home" data-nav="home" aria-label="首页"><svg><use href="#icon-home"/></svg><span>首页</span></a>
-      <a href="#projects" data-nav="projects" aria-label="项目"><svg><use href="#icon-project"/></svg><span>项目</span></a>
-      <a href="#internships" data-nav="internships" aria-label="实习"><svg><use href="#icon-work"/></svg><span>实习</span></a>
-      <a href="#research" data-nav="research" aria-label="科研"><svg><use href="#icon-research"/></svg><span>科研</span></a>
-      <a href="#search" data-nav="search" aria-label="搜索"><svg><use href="#icon-search"/></svg><span>搜索</span></a>
-    </div>
-    <a id="github-link" class="github-link glass" href="https://github.com/NJUDJ" target="_blank" rel="noopener noreferrer" aria-label="访问我的 GitHub"><svg><use href="#icon-github"/></svg></a>
-  </nav>
-
-  <dialog id="entry-dialog" class="entry-dialog glass" aria-labelledby="entry-title">
+  <dialog id="entry-dialog" class="entry-dialog" aria-labelledby="entry-title">
     <button id="close-entry" class="icon-button close-entry" type="button" aria-label="关闭详情"><svg><use href="#icon-close"/></svg></button>
     <p id="entry-meta" class="eyebrow"></p><h2 id="entry-title"></h2><p id="entry-summary" class="entry-summary"></p><div id="entry-body" class="entry-body"></div>
-    <a id="entry-link" class="primary-link" target="_blank" rel="noopener noreferrer" hidden>访问相关链接 <svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+    <a id="entry-link" class="text-link" target="_blank" rel="noopener noreferrer" hidden>查看相关资料 <svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
   </dialog>
 </body>
 </html>

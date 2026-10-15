@@ -3,8 +3,8 @@ window.PROFILE = {
   name: "个人主页",
   handle: "NJUDJ",
   initials: "NJ",
-  description: "项目实践、实习经历与科研探索。\n在这里整理经历，记录每一步成长。",
-  about: "这里展示我的项目、实习与科研经历，更多内容将陆续补充。",
+  description: "这里整理我的项目、实习和科研记录。",
+  about: "目前还在整理过往的经历，之后会陆续更新。",
   startTime: "2026-10-09T00:00:00+08:00",
   github: "https://github.com/NJUDJ",
 
@@ -14,7 +14,8 @@ window.PROFILE = {
   sections: [
     {
       id: "projects", title: "项目", english: "PROJECTS", icon: "project",
-      intro: "从想法到实现，记录做过的事。",
+      intro: "作品与实践",
+      emptyText: "项目过程、个人分工与成果。",
       items: [
         {
           id: "project-01",
@@ -35,7 +36,8 @@ window.PROFILE = {
     },
     {
       id: "internships", title: "实习", english: "INTERNSHIPS", icon: "work",
-      intro: "在真实场景中学习与积累。",
+      intro: "工作经历",
+      emptyText: "参与的工作，以及从中学到的东西。",
       items: [
         {
           id: "internship-01",
@@ -56,7 +58,8 @@ window.PROFILE = {
     },
     {
       id: "research", title: "科研", english: "RESEARCH", icon: "research",
-      intro: "提出问题，探索方法，积累发现。",
+      intro: "课题与研究",
+      emptyText: "研究课题、方法与相关资料。",
       items: [
         {
           id: "research-01",

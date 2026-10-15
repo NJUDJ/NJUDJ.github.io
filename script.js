@@ -5,7 +5,6 @@
   const $ = selector => document.querySelector(selector);
   let searching = false;
   let category = "all";
-  let activeSection = "home";
   let lastTrigger = null;
   const dialog = $("#entry-dialog");
   const icon = name => `<svg aria-hidden="true"><use href="#icon-${name}"/></svg>`;
@@ -19,7 +18,6 @@
     try { const url = new URL(value); return ["https:", "http:"].includes(url.protocol) ? url.href : null; } catch (_) { return null; }
   }
   function setActive(id) {
-    activeSection = id;
     document.querySelectorAll("[data-nav]").forEach(link => {
       const active = link.dataset.nav === id;
       link.classList.toggle("active", active);
@@ -44,16 +42,22 @@
     dialog.scrollTop = 0;
   }
   function createCard(item, section) {
-    const card = make("article", "experience-card glass");
+    const card = make("article", "experience-card");
+    if (item.placeholder) {
+      card.classList.add("is-placeholder");
+      const note = make("div", "placeholder-note");
+      note.append(make("p", "placeholder-title", "内容整理中"), make("p", "card-summary", section.emptyText || "之后会补充到这里。"));
+      card.append(note, make("span", "placeholder-label", "待更新"));
+      return card;
+    }
     const symbol = make("div", "entry-icon"); symbol.innerHTML = icon(section.icon);
     const content = make("div", "card-copy");
     const top = make("div", "card-top"); top.append(make("h3", "", item.title));
-    if (item.placeholder) top.append(make("span", "placeholder-label", "待填写"));
     const meta = make("p", "card-meta");
     meta.append(make("span", "", item.organization), make("span", "", item.period));
     const bottom = make("div", "card-bottom");
     const tags = make("div", "tags"); tags.append(...(item.tags || []).map(tag => make("span", "tag", tag)));
-    const button = make("button", "detail-button", "查看详情"); button.type = "button";
+    const button = make("button", "detail-button", "详情"); button.type = "button";
     button.setAttribute("aria-label", `查看详情：${item.title}`); button.insertAdjacentHTML("beforeend", icon("arrow"));
     button.addEventListener("click", () => openDetails(item, section, button));
     bottom.append(tags, button);
@@ -79,11 +83,11 @@
       titleWrap.append(make("span", "section-number", String(index + 1).padStart(2, "0")), titleGroup);
       heading.append(titleWrap, make("p", "section-intro", section.intro));
       const cards = make("div", "entry-list"); cards.append(...items.map(item => createCard(item, section)));
-      if (!items.length) cards.append(make("p", "empty-message glass", "相关经历整理中，敬请期待。"));
+      if (!items.length) cards.append(make("p", "empty-message", "内容整理中。"));
       block.append(heading, cards); container.append(block);
     });
     $("#empty-message").hidden = !searching || total > 0;
-    $("#search-status").textContent = `找到 ${total} 条经历`;
+    $("#search-status").textContent = `找到 ${total} 项内容`;
   }
   function renderFilters() {
     $("#search-filters").replaceChildren();
@@ -137,8 +141,6 @@
   $("#site-description").textContent = profile.description;
   $("#about-text").textContent = profile.about;
   $("#profile-handle").textContent = profile.handle;
-  $("#profile-monogram").textContent = profile.initials;
-  $("#about-initials").textContent = profile.initials;
   for (const selector of ["#github-link", "#about-github"]) {
     const url = safeLink(profile.github); $(selector).hidden = !url;
     if (url) $(selector).href = url;
@@ -147,14 +149,12 @@
   function updateUptime() {
     const start = Date.parse(profile.startTime);
     if (!Number.isFinite(start)) { $("#uptime").hidden = true; return; }
-    const total = Math.max(0, Math.floor((Date.now() - start) / 1000));
-    const pad = value => String(value).padStart(2, "0");
-    $("#uptime").textContent = `已运行 ${Math.floor(total / 86400)} 天 ${pad(Math.floor(total % 86400 / 3600))} 时 ${pad(Math.floor(total % 3600 / 60))} 分 ${pad(total % 60)} 秒`;
+    $("#uptime").textContent = "建站于 " + profile.startTime.slice(0, 10).replace(/-/g, ".");
   }
   function applyTheme(theme) {
     document.body.dataset.theme = theme;
     $("#theme-label").textContent = theme === "deep" ? "切换浅蓝" : "切换深蓝";
-    $("meta[name='theme-color']").content = theme === "deep" ? "#18365f" : "#dceaff";
+    $("meta[name='theme-color']").content = theme === "deep" ? "#142438" : "#edf3f9";
   }
   let theme = "light";
   try { if (localStorage.getItem("personal-homepage-blue-theme") === "deep") theme = "deep"; } catch (_) {}
@@ -164,5 +164,5 @@
     applyTheme(next);
     try { localStorage.setItem("personal-homepage-blue-theme", next); } catch (_) {}
   });
-  updateUptime(); setInterval(updateUptime, 1000); navigate(location.hash, Boolean(location.hash));
+  updateUptime(); navigate(location.hash, Boolean(location.hash));
 })();
