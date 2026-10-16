@@ -3,7 +3,6 @@
   "use strict";
   const profile = window.PROFILE;
   const $ = selector => document.querySelector(selector);
-  let searching = false;
   let category = "all";
   let lastTrigger = null;
   const dialog = $("#entry-dialog");
@@ -66,13 +65,14 @@
     return card;
   }
   function renderSections() {
-    const query = searching ? $("#search-input").value.trim().toLocaleLowerCase() : "";
+    const query = $("#search-input").value.trim().toLocaleLowerCase();
+    const filtering = query !== "" || category !== "all";
     const container = $("#resume-sections"); container.replaceChildren();
     let total = 0;
     profile.sections.forEach((section, index) => {
-      if (searching && category !== "all" && category !== section.id) return;
+      if (category !== "all" && category !== section.id) return;
       const items = section.items.filter(item => !query || [section.title, item.title, item.organization, item.period, item.summary, ...(item.tags || []), ...(item.details || []).flatMap(detail => [detail.heading, detail.text])].join(" ").toLocaleLowerCase().includes(query));
-      if (searching && !items.length) return;
+      if (filtering && !items.length) return;
       total += items.length;
       const block = make("section", "resume-section"); block.id = section.id;
       block.setAttribute("aria-labelledby", `${section.id}-title`);
@@ -86,7 +86,7 @@
       if (!items.length) cards.append(make("p", "empty-message", "内容整理中。"));
       block.append(heading, cards); container.append(block);
     });
-    $("#empty-message").hidden = !searching || total > 0;
+    $("#empty-message").hidden = !filtering || total > 0;
     $("#search-status").textContent = `找到 ${total} 项内容`;
   }
   function renderFilters() {
@@ -100,19 +100,18 @@
   }
   function navigate(hash, scroll = true) {
     const id = hash.replace(/^#/, "") || "home";
-    searching = id === "search";
-    $("#search-panel").hidden = !searching;
-    if (!searching) { category = "all"; $("#search-input").value = ""; }
+    const searchRoute = id === "search";
+    if (!searchRoute) { category = "all"; $("#search-input").value = ""; }
     renderFilters(); renderSections();
     const valid = ["home", "search", "about", ...profile.sections.map(section => section.id)].includes(id);
     const targetId = valid ? id : "home";
     setActive(targetId === "about" ? "home" : targetId);
     if (scroll) {
-      const target = document.getElementById(searching ? "search-panel" : targetId);
+      const target = document.getElementById(searchRoute ? "search-panel" : targetId);
       if (targetId === "home") window.scrollTo({ top: 0, behavior: "smooth" });
       else target?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    if (searching) $("#search-input").focus({ preventScroll: true });
+    if (searchRoute) $("#search-input").focus({ preventScroll: true });
   }
   // 同一个栏目重复点击时也能定位；浏览器前进、后退则由 hashchange 处理。
   document.addEventListener("click", event => {
@@ -125,7 +124,12 @@
   });
   window.addEventListener("hashchange", () => navigate(location.hash));
   $("#search-input").addEventListener("input", renderSections);
-  $("#close-search").addEventListener("click", () => { history.pushState(null, "", "#home"); navigate("#home"); });
+  $("#reset-search").addEventListener("click", () => {
+    category = "all";
+    $("#search-input").value = "";
+    renderFilters(); renderSections();
+    $("#search-input").focus({ preventScroll: true });
+  });
   $("#close-entry").addEventListener("click", () => dialog.close());
   dialog.addEventListener("close", () => lastTrigger?.focus({ preventScroll: true }));
   dialog.addEventListener("click", event => {

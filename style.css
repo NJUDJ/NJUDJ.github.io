@@ -65,6 +65,8 @@ h1 { margin: 0 0 22px; font-family: "Songti SC", "Noto Serif CJK SC", SimSun, se
 .search-panel { padding: 26px; margin: 0 0 32px; border: 1px solid var(--line); border-radius: 3px; background: var(--paper); scroll-margin-top: 112px; }
 .search-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; }
 .search-heading h2 { margin: 0; font-size: 18px; font-weight: 500; }
+.reset-search { min-height: 36px; padding: 6px 0 6px 12px; border: 0; background: transparent; color: var(--muted); font-size: 11px; }
+.reset-search:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
 .icon-button { display: grid; place-items: center; width: 38px; height: 38px; border: 0; border-radius: 3px; background: transparent; color: var(--muted); }
 .icon-button:hover { background: var(--hover); color: var(--ink); }
 .input-wrap { position: relative; }
