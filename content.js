@@ -8,7 +8,7 @@ window.PROFILE = {
   startTime: "2026-10-09T00:00:00+08:00",
   github: "https://github.com/NJUDJ",
 
-  // 科研和创业栏目已填写真实经历；项目与实习栏目暂时保留占位内容。
+  // 项目、科研和创业栏目已填写经历；实习栏目暂时保留占位内容。
   // 填好一条经历后，把 placeholder 改为 false。
   // 每个 items 数组中可以添加更多 { ... }，每条 id 应保持唯一。
   sections: [
@@ -19,16 +19,37 @@ window.PROFILE = {
       items: [
         {
           id: "project-01",
-          title: "项目名称待填写",
-          organization: "项目方向 / 担任角色",
-          period: "起止时间待填写",
-          summary: "这里将展示项目背景、负责的工作，以及最终实现的成果。",
-          tags: ["项目实践", "个人贡献"],
-          placeholder: true,
+          title: "AI 心理健康助手后端开发",
+          organization: "个人项目 · 课程知识延伸",
+          period: "后端开发",
+          summary: "结合学校课程知识与个人对心理健康辅助应用的思考，设计并实现用户注册登录、密码加密、JWT 令牌签发等后端基础功能。",
+          tags: ["Java 后端", "用户体系", "JWT"],
+          placeholder: false,
           details: [
-            { heading: "项目背景", text: "待填写：这个项目要解决什么问题，面向哪些用户或场景。" },
-            { heading: "我的工作", text: "待填写：自己负责的部分，采用的方法、工具或技术。" },
-            { heading: "项目成果", text: "待填写：实际完成的成果，以及可以公开展示的作品或数据。" },
+            {
+              heading: "项目背景",
+              text: "结合学校课程所学知识与个人对心理健康辅助应用的思考，以 AI 心理健康助手为场景开展后端项目设计，围绕用户体系、数据存储、接口组织与基础安全处理进行实现。",
+            },
+            {
+              heading: "技术栈",
+              text: "Java、Spring Boot、MyBatis-Plus、MySQL、Spring Security、JWT。",
+            },
+            {
+              heading: "后端工程搭建",
+              text: "采用 Controller、Service、Mapper 分层组织代码，通过 MyBatis-Plus 实现用户数据的查询与持久化，使用 DTO 区分接口请求、响应和数据库实体。",
+            },
+            {
+              heading: "用户注册与登录",
+              text: "开发注册、登录接口，支持用户名或邮箱登录，加入用户名和邮箱重复检查、确认密码校验及账户状态检查。",
+            },
+            {
+              heading: "密码与令牌处理",
+              text: "使用 BCrypt 进行密码哈希存储和匹配，在登录成功后签发包含用户身份、角色及有效期的 JWT 令牌。",
+            },
+            {
+              heading: "接口规范化",
+              text: "使用 Jakarta Validation 校验请求参数，封装统一响应结构和全局异常处理，集中返回参数校验错误与业务异常信息。",
+            },
           ],
           url: "", // 可填写作品或代码仓库的 https 链接；留空则不显示按钮。
         },
