@@ -3,12 +3,12 @@ window.PROFILE = {
   name: "个人主页",
   handle: "NJUDJ",
   initials: "NJ",
-  description: "这里整理我的项目、实习和科研记录。",
-  about: "正在开展 AI IDE 用户评价研究，主要负责团队统筹、标注工具开发和数据分析。",
+  description: "这里整理我的项目、实习、科研和创业经历。",
+  about: "正在开展 AI IDE 用户评价研究，也参与心迹群岛的个人 AI 软件开发与 FDE 工作。",
   startTime: "2026-10-09T00:00:00+08:00",
   github: "https://github.com/NJUDJ",
 
-  // 科研栏目已填写真实经历；项目与实习栏目暂时保留占位内容。
+  // 科研和创业栏目已填写真实经历；项目与实习栏目暂时保留占位内容。
   // 填好一条经历后，把 placeholder 改为 false。
   // 每个 items 数组中可以添加更多 { ... }，每条 id 应保持唯一。
   sections: [
@@ -96,6 +96,41 @@ window.PROFILE = {
             },
           ],
           url: "",
+        },
+      ],
+    },
+    {
+      id: "startup", title: "创业", english: "STARTUP", icon: "work",
+      intro: "产品开发与业务落地",
+      emptyText: "创业项目与产品实践。",
+      items: [
+        {
+          id: "vesti-xinji",
+          title: "心迹群岛 VESTI 产品开发与 FDE",
+          organization: "心迹群岛（南京）智能科技有限公司",
+          period: "参与中",
+          summary: "作为核心开发成员，主要参与 VESTI 个人 AI 辅助软件开发与 FDE 业务落地。项目同时开展 AI 技术交流与用户社群建设。",
+          tags: ["核心开发成员", "AI 软件开发", "FDE"],
+          placeholder: false,
+          details: [
+            {
+              heading: "公司与项目",
+              text: "参与心迹群岛（南京）智能科技有限公司创业项目，担任核心开发成员。\n公司围绕 VESTI 心迹开展本地优先的 AI 对话记忆与知识管理产品研发，并面向企业提供知识库与 Agent 应用服务。",
+            },
+            {
+              heading: "个人 AI 辅助软件开发",
+              text: "参与 VESTI 个人端 AI 辅助软件开发，围绕跨平台 AI 对话整理、记忆检索与知识复用等场景，推进功能实现与产品迭代。",
+            },
+            {
+              heading: "FDE 与业务落地",
+              text: "参与 FDE 项目，在实际业务场景中对接需求、开发功能、适配部署，并根据使用反馈迭代，推动 AI 应用融入具体工作流程。",
+            },
+            {
+              heading: "社群与用户交流",
+              text: "项目现已建立社群，围绕 AI 工具使用、产品体验和开发实践开展交流，连接产品使用者与开发团队，收集实际需求与改进反馈。",
+            },
+          ],
+          url: "https://github.com/abraxas914/VESTI",
         },
       ],
     },
