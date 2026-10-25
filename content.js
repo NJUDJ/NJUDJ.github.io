@@ -1,159 +1,231 @@
-// 修改文字主要看这个文件。引号中填文字；每一项后面的逗号请保留。
+// 页面内容来源于个人简历 V2；团队指标、阶段数据及论文状态分别注明。
 window.PROFILE = {
-  name: "个人主页",
-  handle: "NJUDJ",
-  initials: "NJ",
-  description: "这里整理我的项目、实习、科研和创业经历。",
-  about: "正在开展 AI IDE 用户评价研究，也参与心迹群岛的个人 AI 软件开发与 FDE 工作。",
-  startTime: "2026-10-09T00:00:00+08:00",
-  github: "https://github.com/NJUDJ",
-
-  // 项目、科研和创业栏目已填写经历；实习栏目暂时保留占位内容。
-  // 填好一条经历后，把 placeholder 改为 false。
-  // 每个 items 数组中可以添加更多 { ... }，每条 id 应保持唯一。
-  sections: [
+  "name": "个人主页",
+  "personName": "段杰",
+  "handle": "NJUDJ",
+  "initials": "DJ",
+  "description": "关注 AI 应用开发、Java 后端与 Agent 工程。\n这里记录我的项目实践、创业参与和科研进展。",
+  "about": "南京大学软件工程本科在读，软工经济创新班。参与个人 AI 软件与企业 Agent 方案落地，也负责 AI IDE 用户评价研究中的标注工具开发和数据分析。正在寻找第一份 AI 应用开发 / Java 后端开发实习。",
+  "education": "南京大学 · 软件工程",
+  "degree": "本科 · 2025—2029",
+  "className": "软工经济创新班",
+  "availability": "每周可到岗 4—5 天，上午、下午均可",
+  "direction": "AI 应用开发 / Java 后端开发",
+  "email": "251250265@smail.nju.edu.cn",
+  "github": "https://github.com/NJUDJ",
+  "startTime": "2026-10-09T00:00:00+08:00",
+  "updated": "2026.10.25",
+  "skills": [
     {
-      id: "projects", title: "项目", english: "PROJECTS", icon: "project",
-      intro: "作品与实践",
-      emptyText: "项目过程、个人分工与成果。",
-      items: [
-        {
-          id: "project-01",
-          title: "AI 心理健康助手后端开发",
-          organization: "个人项目 · 课程知识延伸",
-          period: "后端开发",
-          summary: "结合学校课程知识与个人对心理健康辅助应用的思考，设计并实现用户注册登录、密码加密、JWT 令牌签发等后端基础功能。",
-          tags: ["Java 后端", "用户体系", "JWT"],
-          placeholder: false,
-          details: [
-            {
-              heading: "项目背景",
-              text: "结合学校课程所学知识与个人对心理健康辅助应用的思考，以 AI 心理健康助手为场景开展后端项目设计，围绕用户体系、数据存储、接口组织与基础安全处理进行实现。",
-            },
-            {
-              heading: "技术栈",
-              text: "Java、Spring Boot、MyBatis-Plus、MySQL、Spring Security、JWT。",
-            },
-            {
-              heading: "后端工程搭建",
-              text: "采用 Controller、Service、Mapper 分层组织代码，通过 MyBatis-Plus 实现用户数据的查询与持久化，使用 DTO 区分接口请求、响应和数据库实体。",
-            },
-            {
-              heading: "用户注册与登录",
-              text: "开发注册、登录接口，支持用户名或邮箱登录，加入用户名和邮箱重复检查、确认密码校验及账户状态检查。",
-            },
-            {
-              heading: "密码与令牌处理",
-              text: "使用 BCrypt 进行密码哈希存储和匹配，在登录成功后签发包含用户身份、角色及有效期的 JWT 令牌。",
-            },
-            {
-              heading: "接口规范化",
-              text: "使用 Jakarta Validation 校验请求参数，封装统一响应结构和全局异常处理，集中返回参数校验错误与业务异常信息。",
-            },
-          ],
-          url: "", // 可填写作品或代码仓库的 https 链接；留空则不显示按钮。
-        },
-      ],
+      "label": "Agent / AI",
+      "text": "Context Engineering · RAG · Long-term Memory · Tool / Function Calling · MCP · Structured Output · Agent Runtime / Routing / Fallback"
     },
     {
-      id: "internships", title: "实习", english: "INTERNSHIPS", icon: "work",
-      intro: "工作经历",
-      emptyText: "参与的工作，以及从中学到的东西。",
-      items: [
-        {
-          id: "internship-01",
-          title: "实习单位与岗位待填写",
-          organization: "部门 / 岗位方向",
-          period: "起止时间待填写",
-          summary: "这里将展示实习期间的主要职责、参与的工作和实践收获。",
-          tags: ["工作职责", "实践收获"],
-          placeholder: true,
-          details: [
-            { heading: "岗位与团队", text: "待填写：单位、部门、岗位，以及实习起止时间。" },
-            { heading: "工作内容", text: "待填写：参与的具体工作、承担的职责和解决的问题。" },
-            { heading: "成果与收获", text: "待填写：可以公开的工作成果，以及获得的经验与能力。" },
-          ],
-          url: "",
-        },
-      ],
+      "label": "后端开发",
+      "text": "Java · Spring Boot · MyBatis-Plus · MySQL · BCrypt / JWT 签发 · Jakarta Validation"
     },
     {
-      id: "research", title: "科研", english: "RESEARCH", icon: "research",
-      intro: "课题与研究",
-      emptyText: "研究课题、方法与相关资料。",
-      items: [
-        {
-          id: "research-01",
-          title: "基于 Reddit 社区的 AI IDE 用户评价分析与动态追踪",
-          organization: "南京大学开甲书院新生早期科研训练项目",
-          period: "2026.04 — 至今",
-          summary: "担任六人团队负责人，负责标注工具开发与数据分析，研究开发者对主流 AI 编程工具的真实评价。G01 批次已整理 134 条帖子，形成 176 组三元组。",
-          tags: ["项目负责人", "标注工具开发", "数据分析"],
-          placeholder: false,
-          details: [
-            {
-              heading: "项目概况",
-              text: "项目全称：基于 Reddit 社区的主流 AI IDE 用户真实评价的感知分析与动态追踪研究。\n南京大学开甲书院新生早期科研训练项目，指导教师：匡宏宇。\n项目以 Reddit 社区的真实讨论为研究对象，分析开发者对 AI 编程工具的使用评价与关注维度，为后续自动化评价分析和长期动态追踪提供基础。",
-            },
-            {
-              heading: "团队统筹",
-              text: "作为项目负责人，组织六人团队开展文献调研、标注分工和多轮校准讨论，推进研究方案细化、标注任务安排与结果复核。",
-            },
-            {
-              heading: "标注工具开发",
-              text: "负责评论标注工具的开发与优化，适配 Reddit 长文本、多评价对象和多标签场景，支持团队完成结构化标注。",
-            },
-            {
-              heading: "标签体系与研究方法",
-              text: "参与改造已有用户反馈标签体系，将评价整理为“对象—评价维度—情感倾向”三元组，明确非评价内容、工具比较及相近标签的判定边界。",
-            },
-            {
-              heading: "数据分析与质量控制",
-              text: "负责标注结果汇总与分歧分析，使用 Jaccard 相似度比较多位标注者的结果，推动标注规则修订与历史数据复核。",
-            },
-            {
-              heading: "阶段性成果",
-              text: "已推进开放校准、配对试标和正式标注。\nG01 批次覆盖 Claude Code、Codex、GitHub Copilot、Antigravity、Cursor 五款工具，共整理 134 条帖子，其中 97 条为评价、37 条为非评价，形成 176 组三元组。\n阶段标注结果为后续自动化评价抽取与动态追踪提供结构化数据基础。",
-            },
-          ],
-          url: "",
-        },
-      ],
+      "label": "Engineering",
+      "text": "Python · Java · C++ · Swift / Kotlin · MySQL / Redis / RabbitMQ/SQLite · Docker · Git / CI · Async / Networking / Testing"
     },
     {
-      id: "startup", title: "创业", english: "STARTUP", icon: "work",
-      intro: "产品开发与业务落地",
-      emptyText: "创业项目与产品实践。",
-      items: [
-        {
-          id: "vesti-xinji",
-          title: "心迹群岛 VESTI 产品开发与 FDE",
-          organization: "心迹群岛（南京）智能科技有限公司",
-          period: "参与中",
-          summary: "作为核心开发成员，主要参与 VESTI 个人 AI 辅助软件开发与 FDE 业务落地。项目同时开展 AI 技术交流与用户社群建设。",
-          tags: ["核心开发成员", "AI 软件开发", "FDE"],
-          placeholder: false,
-          details: [
-            {
-              heading: "公司与项目",
-              text: "参与心迹群岛（南京）智能科技有限公司创业项目，担任核心开发成员。\n公司围绕 VESTI 心迹开展本地优先的 AI 对话记忆与知识管理产品研发，并面向企业提供知识库与 Agent 应用服务。",
-            },
-            {
-              heading: "个人 AI 辅助软件开发",
-              text: "参与 VESTI 个人端 AI 辅助软件开发，围绕跨平台 AI 对话整理、记忆检索与知识复用等场景，推进功能实现与产品迭代。",
-            },
-            {
-              heading: "FDE 与业务落地",
-              text: "参与 FDE 项目，在实际业务场景中对接需求、开发功能、适配部署，并根据使用反馈迭代，推动 AI 应用融入具体工作流程。",
-            },
-            {
-              heading: "社群与用户交流",
-              text: "项目现已建立社群，围绕 AI 工具使用、产品体验和开发实践开展交流，连接产品使用者与开发团队，收集实际需求与改进反馈。",
-            },
-          ],
-          url: "https://github.com/abraxas914/VESTI",
-        },
-      ],
-    },
+      "label": "研究与交付",
+      "text": "FDE 企业 Agent 方案与联调 · 个人 AI 软件研发 · ABSA / Taxonomy · Jaccard · Ground Truth"
+    }
   ],
+  "sections": [
+    {
+      "id": "projects",
+      "title": "项目实践",
+      "filterTitle": "项目",
+      "english": "PROJECT",
+      "icon": "project",
+      "intro": "用户体系与后端工程",
+      "items": [
+        {
+          "id": "project-01",
+          "title": "AI 心理健康助手后端开发",
+          "organization": "个人项目",
+          "period": "后端开发",
+          "summary": "面向校园心理健康应用构建用户基础模块，完成注册、登录接口，以及密码处理、令牌签发与接口治理。",
+          "tags": [
+            "Java / Spring Boot",
+            "MyBatis-Plus",
+            "MySQL"
+          ],
+          "highlights": [
+            "Controller → Service → Mapper 分层，DTO 与 Entity 分离。",
+            "BCrypt 密码哈希与 HMAC-SHA256 JWT 签发。",
+            "@Valid 参数校验、统一响应与全局异常处理。"
+          ],
+          "facts": [
+            {
+              "value": "2",
+              "label": "已实现 POST 接口",
+              "note": "注册 / 登录"
+            }
+          ],
+          "factScope": "当前实现范围：用户基础模块",
+          "details": [
+            {
+              "heading": "项目概况",
+              "text": "基于 Java / Spring Boot、MyBatis-Plus 与 MySQL 构建校园心理健康应用用户模块，已实现注册、登录 2 个 POST 接口。"
+            },
+            {
+              "heading": "分层与数据契约",
+              "text": "采用 Controller → Service → Mapper 分层，以 Command DTO / Response DTO 与 Entity 隔离接口协议和持久化模型；通过 LambdaQueryWrapper 构造用户名 / 邮箱 OR 查询与重复检查，响应映射排除密码字段。"
+            },
+            {
+              "heading": "账户与凭证处理",
+              "text": "串联用户名 / 邮箱重复预检、密码确认、账户状态及用户类型合法性校验；使用 BCrypt encode / matches 完成密码哈希与验证，以 HMAC-SHA256 签发含用户身份、角色、签发者及有效期的 JWT。"
+            },
+            {
+              "heading": "接口治理",
+              "text": "通过 @Valid + Jakarta Validation 声明字段必填、长度与格式约束；以 Result<T> 统一响应，由 @RestControllerAdvice 集中处理参数校验与 BusinessException 两类异常，分离输入约束和业务规则。"
+            }
+          ],
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "startup",
+      "title": "创业实践",
+      "filterTitle": "创业",
+      "english": "PRODUCT & FDE",
+      "icon": "work",
+      "intro": "个人 AI 产品与业务落地",
+      "items": [
+        {
+          "id": "vesti-xinji",
+          "title": "心迹群岛 VESTI 产品开发与 FDE",
+          "organization": "心迹群岛（南京）智能科技有限公司",
+          "period": "核心开发成员",
+          "summary": "参与 Local-First AI 记忆中台研发，围绕跨平台会话归档、本地知识库检索与企业 Agent 方案推进功能迭代。",
+          "tags": [
+            "React / TypeScript",
+            "Local-First",
+            "Hybrid Search",
+            "MCP / FDE"
+          ],
+          "highlights": [
+            "Plasmo / Chrome MV3，Parser / Observer / Gate 分层与 IndexedDB 本地持久化。",
+            "Embedding → 混合检索 → Top-K 上下文装配 → 引用溯源。",
+            "参与需求对接、部署联调、结构化输出与工具接入方案。"
+          ],
+          "facts": [
+            {
+              "value": "8",
+              "label": "AI 平台覆盖",
+              "note": "团队产品范围"
+            },
+            {
+              "value": "1.000",
+              "label": "Recall@5",
+              "note": "团队产品评测"
+            },
+            {
+              "value": "< 40 ms",
+              "label": "1 万条向量扫描",
+              "note": "团队产品评测"
+            }
+          ],
+          "factScope": "覆盖范围及性能数据采用团队产品评测口径",
+          "details": [
+            {
+              "heading": "产品与个人角色",
+              "text": "Local-First AI 记忆中台；团队产品覆盖 8 大 AI 平台，提供扩展 / Web / 桌面 / Skills / MCP 多形态入口。"
+            },
+            {
+              "heading": "跨平台采集与存储",
+              "text": "参与 React / TypeScript + Plasmo（Chrome MV3）产品研发；以 Parser / Observer / Gate 分层与 MutationObserver 监听解析多平台对话，通过 Dexie.js / IndexedDB 本地持久化及增量更新实现会话归档。"
+            },
+            {
+              "heading": "记忆检索与知识复用",
+              "text": "围绕 Embedding → 关键词 / 向量 Hybrid Search → Top-K 上下文装配 → 引用溯源参与功能迭代，支撑本地知识库问答与跨会话记忆复用；团队产品评测口径：Recall@5 = 1.000，1 万条向量扫描 < 40 ms。"
+            },
+            {
+              "heading": "FDE 方案与部署联调",
+              "text": "参与需求对接、功能联调与部署适配；企业 Agent 技术方案涉及 RAG 知识检索、Prompt-as-Code、JSON Schema / Structured Output 与 MCP / Tool Calling 接入，结合使用反馈迭代，项目配套用户交流社群。"
+            }
+          ],
+          "url": "https://github.com/abraxas914/VESTI",
+          "linkLabel": "VESTI 开源仓库"
+        }
+      ]
+    },
+    {
+      "id": "research",
+      "title": "科研探索",
+      "filterTitle": "科研",
+      "english": "RESEARCH",
+      "icon": "research",
+      "intro": "理解开发者的真实评价",
+      "items": [
+        {
+          "id": "research-01",
+          "title": "AI IDE 用户评价分析与动态追踪",
+          "organization": "南京大学开甲书院早期科研训练项目",
+          "period": "学生小组组长 · 2026.04—至今",
+          "summary": "负责长文本标注工具开发与数据分析，统筹六人团队校准。当前推进 Reddit 数据标注，为自动化抽取、评价趋势分析及后续论文准备数据。",
+          "tags": [
+            "ABSA / Taxonomy",
+            "Jaccard",
+            "Ground Truth"
+          ],
+          "highlights": [
+            "基于前序研究的 62 个叶子标签，开展 Reddit 多对象、多标签场景适配。",
+            "评价筛选 → 对象 / 证据定位 → 维度 / 情感标注。",
+            "Jaccard 分歧分析、规则修订与历史数据回溯复核。"
+          ],
+          "facts": [
+            {
+              "value": "134",
+              "label": "帖子",
+              "note": "97 条评价 / 37 条非评价"
+            },
+            {
+              "value": "176",
+              "label": "评价三元组",
+              "note": "对象 / 维度 / 情感"
+            },
+            {
+              "value": "42",
+              "label": "涉及叶子标签",
+              "note": "覆盖 5 款工具"
+            }
+          ],
+          "factScope": "G01 批次阶段数据 · 当前为标注与论文前期准备",
+          "details": [
+            {
+              "heading": "项目与当前进展",
+              "text": "南京大学开甲书院早期科研训练项目  ·  指导教师：匡老师\n角色：项目学生小组组长。论文计划撰写，当前正在进行数据标注与分析准备。"
+            },
+            {
+              "heading": "前序研究基础",
+              "text": "研究基础：Lyu et al. “My productivity is boosted, but ...” Demystifying Users’ Perception on AI Coding Assistants（ASE 2025）。\n该论文为方法参考。"
+            },
+            {
+              "heading": "Taxonomy 适配",
+              "text": "面向 Reddit 长文本，对前序研究的 62 个叶子标签进行场景裁剪、扩展与边界澄清；采用评价筛选 → 对象 / 证据定位 → 维度 / 情感标注，处理多对象、多标签的 Aspect-Based Sentiment Analysis（ABSA）任务。"
+            },
+            {
+              "heading": "标注工具与一致性",
+              "text": "开发并优化长文本标注工具，统筹六人团队的标注分工与校准；汇总多人标注，使用 Jaccard 相似度定位标签集合分歧，结合分类规则修订开展历史数据回溯复核，为后续 Ground Truth 构建准备数据。"
+            },
+            {
+              "heading": "阶段数据与分析",
+              "text": "G01 批次整理 134 条帖子（评价 97 条、非评价 37 条），形成 176 组“对象—评价维度—情感倾向”三元组，涉及 42 个叶子标签、覆盖 5 款工具；当前推进数据标注与分析准备。"
+            },
+            {
+              "heading": "研究价值与论文准备",
+              "text": "拟以人工 Ground Truth 比较叶子 / 子类 / 主类三层级自动抽取并追踪评价趋势，以真实体验补充 HumanEval / SWE-bench，为工具选型、产品优化和计划撰写的后续论文准备数据。"
+            }
+          ],
+          "url": "https://arxiv.org/abs/2508.12285",
+          "linkLabel": "阅读前序研究（ASE 2025）"
+        }
+      ]
+    }
+  ]
 };

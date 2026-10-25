@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#edf3f9">
-  <meta name="description" content="个人主页：项目、实习、科研与创业经历。">
-  <title>个人主页</title>
-  <link rel="stylesheet" href="./style.css?v=4">
-  <script defer src="./content.js?v=6"></script>
-  <script defer src="./script.js?v=4"></script>
+  <meta name="description" content="段杰，南京大学软件工程本科。AI 应用开发、Java 后端、产品实践与 AI IDE 用户评价研究。">
+  <title>个人主页 · 段杰</title>
+  <link rel="stylesheet" href="./style.css?v=20261025">
+  <script defer src="./content.js?v=20261025"></script>
+  <script defer src="./script.js?v=20261025"></script>
 </head>
 <body>
   <svg class="svg-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -28,41 +28,51 @@
       <nav class="site-nav" aria-label="主导航">
         <a href="#home" data-nav="home">首页</a>
         <a href="#projects" data-nav="projects">项目</a>
-        <a href="#internships" data-nav="internships">实习</a>
-        <a href="#research" data-nav="research">科研</a>
         <a href="#startup" data-nav="startup">创业</a>
-        <a href="#search" data-nav="search">搜索</a>
+        <a href="#research" data-nav="research">科研</a>
+        <a href="#skills" data-nav="skills">技能</a>
+        <a href="#about" data-nav="about">关于</a>
       </nav>
     </header>
     <main>
       <section class="hero" aria-labelledby="hero-title">
-        <p class="hero-kicker">你好，欢迎来访。</p>
-        <h1 id="hero-title">个人主页</h1>
-        <p id="site-description" class="hero-description"></p>
-        <div class="hero-actions">
-          <a class="text-link" href="#about">关于我</a>
-          <a id="github-link" class="text-link" href="https://github.com/NJUDJ" target="_blank" rel="noopener noreferrer" aria-label="访问我的 GitHub">GitHub <span aria-hidden="true">↗</span></a>
+        <div class="hero-main">
+          <p class="hero-kicker"><span id="profile-name">段杰</span><span aria-hidden="true"> / </span> PROJECTS · PRODUCT · RESEARCH</p>
+          <h1 id="hero-title">个人主页</h1>
+          <p id="site-description" class="hero-description"></p>
+          <div class="hero-actions"><a class="primary-link" href="#projects">看看我的经历 <svg aria-hidden="true"><use href="#icon-arrow"/></svg></a><a id="github-link" class="text-link" href="https://github.com/NJUDJ" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
         </div>
+        <aside class="hero-profile" aria-label="个人信息">
+          <p class="eyebrow">EDUCATION & INTERESTS</p>
+          <h2 id="education-name">南京大学 · 软件工程</h2>
+          <p id="education-degree">本科 · 2025—2029</p><p id="education-class">软工经济创新班</p>
+          <div class="profile-direction"><span>实习方向</span><p id="profile-direction"></p></div>
+          <a id="hero-email" class="text-link" href="mailto:251250265@smail.nju.edu.cn">邮件联系 ↗</a>
+        </aside>
       </section>
 
       <section id="search-panel" class="search-panel" aria-labelledby="search-title">
-        <div class="search-heading"><h2 id="search-title">站内搜索</h2><button id="reset-search" class="reset-search" type="button">清空筛选</button></div>
-        <label class="sr-only" for="search-input">搜索项目、实习、科研或创业经历</label>
-        <div class="input-wrap"><svg aria-hidden="true"><use href="#icon-search"/></svg><input id="search-input" type="search" placeholder="输入关键词" autocomplete="off"></div>
+        <div class="search-heading"><h2 id="search-title">经历索引</h2><button id="reset-search" class="reset-search" type="button">清空筛选</button></div>
+        <label class="sr-only" for="search-input">搜索项目、创业或科研经历</label>
+        <div class="input-wrap"><svg aria-hidden="true"><use href="#icon-search"/></svg><input id="search-input" type="search" placeholder="搜索经历或技术，例如 RAG、JWT" autocomplete="off"></div>
         <div id="search-filters" class="search-filters" aria-label="选择经历类型"></div>
         <p id="search-status" class="search-status" role="status"></p>
       </section>
       <div id="resume-sections"></div>
       <p id="empty-message" class="empty-message" hidden>没有找到相关内容，换个关键词试试。</p>
 
+      <section class="resume-section skills-section" id="skills" aria-labelledby="skills-title">
+        <div class="section-heading"><div class="section-title-wrap"><span class="section-number">04</span><div><h2 id="skills-title">专业技能</h2><p class="eyebrow">TOOLBOX</p></div></div><p class="section-intro">围绕开发、交付与研究的技术积累。</p></div>
+        <dl id="skills-list" class="skills-list"></dl>
+      </section>
       <section class="about-card" id="about" aria-labelledby="about-title">
         <div class="about-heading"><h2 id="about-title">关于我</h2></div>
-        <div class="about-copy"><p id="about-text"></p><a id="about-github" class="text-link" href="https://github.com/NJUDJ" target="_blank" rel="noopener noreferrer">在 GitHub 找到我 <span aria-hidden="true">↗</span></a></div>
+        <div class="about-copy"><p id="about-text"></p><p id="availability" class="availability"></p><div class="contact-links"><a id="contact-email" class="text-link" href="mailto:251250265@smail.nju.edu.cn">251250265@smail.nju.edu.cn</a><a id="about-github" class="text-link" href="https://github.com/NJUDJ" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div>
       </section>
     </main>
     <footer class="site-footer">
       <div class="footer-main"><span>© <span id="copyright-year"></span> <span data-site-name>个人主页</span></span><button id="theme-toggle" type="button"><span class="theme-dot" aria-hidden="true"></span><span id="theme-label">切换深蓝</span></button></div>
-      <div class="footer-note"><span id="uptime"></span><span>GitHub Pages</span></div>
+      <div class="footer-note"><span id="uptime"></span><span>更新于 <span id="updated-date">2026.10.25</span> · GitHub Pages</span></div>
     </footer>
   </div>
   <dialog id="entry-dialog" class="entry-dialog" aria-labelledby="entry-title">

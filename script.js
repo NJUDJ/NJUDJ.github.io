@@ -36,6 +36,7 @@
     }
     const url = safeLink(item.url);
     $("#entry-link").hidden = !url;
+    $("#entry-link").textContent = (item.linkLabel || "查看相关资料") + " ↗";
     if (url) $("#entry-link").href = url; else $("#entry-link").removeAttribute("href");
     dialog.showModal();
     dialog.scrollTop = 0;
@@ -56,11 +57,28 @@
     meta.append(make("span", "", item.organization), make("span", "", item.period));
     const bottom = make("div", "card-bottom");
     const tags = make("div", "tags"); tags.append(...(item.tags || []).map(tag => make("span", "tag", tag)));
-    const button = make("button", "detail-button", "详情"); button.type = "button";
+    const button = make("button", "detail-button", "阅读详细经历"); button.type = "button";
     button.setAttribute("aria-label", `查看详情：${item.title}`); button.insertAdjacentHTML("beforeend", icon("arrow"));
     button.addEventListener("click", () => openDetails(item, section, button));
     bottom.append(tags, button);
-    content.append(top, meta, make("p", "card-summary", item.summary), bottom);
+    content.append(top, meta, make("p", "card-summary", item.summary));
+    if (item.highlights?.length) {
+      const list = make("ul", "card-highlights");
+      list.append(...item.highlights.map(text => make("li", "", text)));
+      content.append(list);
+    }
+    if (item.facts?.length) {
+      const facts = make("dl", `entry-facts${item.facts.length === 1 ? " single" : ""}`);
+      item.facts.forEach(fact => {
+        const group = make("div");
+        group.append(make("dt", "", fact.label), make("dd", "", fact.value));
+        if (fact.note) group.append(make("span", "fact-note", fact.note));
+        facts.append(group);
+      });
+      content.append(facts);
+      if (item.factScope) content.append(make("p", "fact-scope", item.factScope));
+    }
+    content.append(bottom);
     card.append(symbol, content);
     return card;
   }
@@ -92,7 +110,7 @@
   function renderFilters() {
     $("#search-filters").replaceChildren();
     [{ id: "all", title: "全部" }, ...profile.sections].forEach(section => {
-      const button = make("button", `filter${category === section.id ? " active" : ""}`, section.title);
+      const button = make("button", `filter${category === section.id ? " active" : ""}`, section.filterTitle || section.title);
       button.type = "button"; button.setAttribute("aria-pressed", String(category === section.id));
       button.addEventListener("click", () => { category = section.id; renderFilters(); renderSections(); });
       $("#search-filters").append(button);
@@ -103,9 +121,9 @@
     const searchRoute = id === "search";
     if (!searchRoute) { category = "all"; $("#search-input").value = ""; }
     renderFilters(); renderSections();
-    const valid = ["home", "search", "about", ...profile.sections.map(section => section.id)].includes(id);
+    const valid = ["home", "search", "about", "skills", ...profile.sections.map(section => section.id)].includes(id);
     const targetId = valid ? id : "home";
-    setActive(targetId === "about" ? "home" : targetId);
+    setActive(targetId);
     if (scroll) {
       const target = document.getElementById(searchRoute ? "search-panel" : targetId);
       if (targetId === "home") window.scrollTo({ top: 0, behavior: "smooth" });
@@ -138,13 +156,29 @@
     if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
   });
 
-  document.title = profile.name;
+  document.title = `${profile.name} · ${profile.personName}`;
   $("meta[name='description']").content = profile.description.replace(/\n/g, " ");
   document.querySelectorAll("[data-site-name]").forEach(element => element.textContent = profile.name);
   $("#hero-title").textContent = profile.name;
   $("#site-description").textContent = profile.description;
   $("#about-text").textContent = profile.about;
   $("#profile-handle").textContent = profile.handle;
+  $("#profile-name").textContent = profile.personName;
+  $("#education-name").textContent = profile.education;
+  $("#education-degree").textContent = profile.degree;
+  $("#education-class").textContent = profile.className;
+  $("#profile-direction").textContent = profile.direction;
+  $("#availability").textContent = profile.availability;
+  $("#updated-date").textContent = profile.updated;
+  for (const selector of ["#hero-email", "#contact-email"]) $(selector).href = `mailto:${profile.email}`;
+  $("#contact-email").textContent = profile.email;
+  const skills = $("#skills-list");
+  for (const skill of profile.skills || []) {
+    const row = make("div", "skill-row");
+    row.append(make("dt", "", skill.label), make("dd", "", skill.text));
+    skills.append(row);
+  }
+
   for (const selector of ["#github-link", "#about-github"]) {
     const url = safeLink(profile.github); $(selector).hidden = !url;
     if (url) $(selector).href = url;
