@@ -1,4 +1,4 @@
-// 页面内容来源于个人简历 V2；团队指标、阶段数据及论文状态分别注明。
+// 页面内容来源于个人简历 V2；比赛奖项及项目来源按本人最新说明更新。
 window.PROFILE = {
   "name": "个人主页",
   "personName": "段杰",
@@ -14,7 +14,7 @@ window.PROFILE = {
   "email": "251250265@smail.nju.edu.cn",
   "github": "https://github.com/NJUDJ",
   "startTime": "2026-10-09T00:00:00+08:00",
-  "updated": "2026.10.25",
+  "updated": "2026.10.27",
   "skills": [
     {
       "label": "Agent / AI",
@@ -101,7 +101,7 @@ window.PROFILE = {
           "title": "心迹群岛 VESTI 产品开发与 FDE",
           "organization": "心迹群岛（南京）智能科技有限公司",
           "period": "核心开发成员",
-          "summary": "参与 Local-First AI 记忆中台研发，围绕跨平台会话归档、本地知识库检索与企业 Agent 方案推进功能迭代。",
+          "summary": "该创业项目由心迹群岛南客松金奖项目发展而来。参与 Local-First AI 记忆中台研发，围绕跨平台会话归档、本地知识库检索与企业 Agent 方案推进功能迭代。",
           "tags": [
             "React / TypeScript",
             "Local-First",
@@ -132,6 +132,10 @@ window.PROFILE = {
           ],
           "factScope": "覆盖范围及性能数据采用团队产品评测口径",
           "details": [
+            {
+              "heading": "项目来源",
+              "text": "该创业项目由心迹群岛南客松金奖项目发展而来。作为核心开发成员，参与后续 VESTI 产品开发与 FDE 工作。"
+            },
             {
               "heading": "产品与个人角色",
               "text": "Local-First AI 记忆中台；团队产品覆盖 8 大 AI 平台，提供扩展 / Web / 桌面 / Skills / MCP 多形态入口。"
@@ -224,6 +228,51 @@ window.PROFILE = {
           ],
           "url": "https://arxiv.org/abs/2508.12285",
           "linkLabel": "阅读前序研究（ASE 2025）"
+        }
+      ]
+    },
+    {
+      "id": "awards",
+      "title": "比赛奖项",
+      "filterTitle": "奖项",
+      "english": "AWARDS",
+      "icon": "project",
+      "intro": "项目路演与赛事成果",
+      "items": [
+        {
+          "id": "award-ai-innovation-01",
+          "title": "心度屿 · AI 应用与软件赛道二等奖",
+          "organization": "第三届南京大学新科技校友发展大会暨首届 AI 创新创业大赛",
+          "period": "心迹群岛、心度屿双项目路演",
+          "summary": "心迹群岛与心度屿双项目路演，心度屿获得 AI 应用与软件赛道二等奖。心迹群岛此前已获南客松金奖，本次参与路演、未参赛。",
+          "tags": [
+            "AI 创新创业大赛",
+            "双项目路演",
+            "二等奖"
+          ],
+          "facts": [
+            {
+              "value": "二等奖",
+              "label": "AI 应用与软件赛道",
+              "note": "获奖项目：心度屿"
+            }
+          ],
+          "factScope": "本届二等奖归属心度屿；心迹群岛未参加本次竞赛。",
+          "details": [
+            {
+              "heading": "赛事与获奖",
+              "text": "第三届南京大学新科技校友发展大会暨首届 AI 创新创业大赛。\n赛道：AI 应用与软件。\n获奖项目：心度屿。\n奖项：二等奖。"
+            },
+            {
+              "heading": "双项目路演与参赛情况",
+              "text": "心迹群岛与心度屿进行了双项目路演。心迹群岛此前已获南客松金奖，本次参与路演、未参赛；心度屿参加本次竞赛并获得 AI 应用与软件赛道二等奖。"
+            },
+            {
+              "heading": "与创业实践的关联",
+              "text": "创业实践中的心迹群岛项目，由心迹群岛南客松金奖项目发展而来。"
+            }
+          ],
+          "url": ""
         }
       ]
     }
