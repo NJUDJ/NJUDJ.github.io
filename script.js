@@ -3,7 +3,7 @@
   "use strict";
   const profile = window.PROFILE;
   const $ = selector => document.querySelector(selector);
-  let category = "all";
+  let activeSection = "all";
   let lastTrigger = null;
   const dialog = $("#entry-dialog");
   const icon = name => `<svg aria-hidden="true"><use href="#icon-${name}"/></svg>`;
@@ -84,13 +84,12 @@
   }
   function renderSections() {
     const query = $("#search-input").value.trim().toLocaleLowerCase();
-    const filtering = query !== "" || category !== "all";
+    const searching = query !== "";
     const container = $("#resume-sections"); container.replaceChildren();
     let total = 0;
     profile.sections.forEach((section, index) => {
-      if (category !== "all" && category !== section.id) return;
       const items = section.items.filter(item => !query || [section.title, item.title, item.organization, item.period, item.summary, ...(item.tags || []), ...(item.details || []).flatMap(detail => [detail.heading, detail.text])].join(" ").toLocaleLowerCase().includes(query));
-      if (filtering && !items.length) return;
+      if (searching && !items.length) return;
       total += items.length;
       const block = make("section", "resume-section"); block.id = section.id;
       block.setAttribute("aria-labelledby", `${section.id}-title`);
@@ -104,23 +103,38 @@
       if (!items.length) cards.append(make("p", "empty-message", "内容整理中。"));
       block.append(heading, cards); container.append(block);
     });
-    $("#empty-message").hidden = !filtering || total > 0;
-    $("#search-status").textContent = `找到 ${total} 项内容`;
+    $("#empty-message").hidden = !searching || total > 0;
+    $("#search-status").textContent = searching
+      ? `找到 ${total} 项内容`
+      : `共 ${total} 段经历 · 点击栏目定位，可连续上下浏览`;
   }
-  function renderFilters() {
+  function renderIndex() {
     $("#search-filters").replaceChildren();
     [{ id: "all", title: "全部" }, ...profile.sections].forEach(section => {
-      const button = make("button", `filter${category === section.id ? " active" : ""}`, section.filterTitle || section.title);
-      button.type = "button"; button.setAttribute("aria-pressed", String(category === section.id));
-      button.addEventListener("click", () => { category = section.id; renderFilters(); renderSections(); });
+      const button = make("button", `filter${activeSection === section.id ? " active" : ""}`, section.filterTitle || section.title);
+      button.type = "button"; button.setAttribute("aria-pressed", String(activeSection === section.id));
+      button.addEventListener("click", () => {
+        activeSection = section.id;
+        $("#search-input").value = "";
+        if (section.id === "all") {
+          renderIndex(); renderSections();
+          return;
+        }
+        const hash = `#${section.id}`;
+        if (location.hash !== hash) history.pushState(null, "", hash);
+        navigate(hash);
+      });
       $("#search-filters").append(button);
     });
   }
   function navigate(hash, scroll = true) {
     const id = hash.replace(/^#/, "") || "home";
     const searchRoute = id === "search";
-    if (!searchRoute) { category = "all"; $("#search-input").value = ""; }
-    renderFilters(); renderSections();
+    if (!searchRoute) {
+      activeSection = profile.sections.some(section => section.id === id) ? id : "all";
+      $("#search-input").value = "";
+    }
+    renderIndex(); renderSections();
     const valid = ["home", "search", "about", "skills", ...profile.sections.map(section => section.id)].includes(id);
     const targetId = valid ? id : "home";
     setActive(targetId);
@@ -141,11 +155,14 @@
     navigate(hash);
   });
   window.addEventListener("hashchange", () => navigate(location.hash));
-  $("#search-input").addEventListener("input", renderSections);
+  $("#search-input").addEventListener("input", () => {
+    activeSection = "all";
+    renderIndex(); renderSections();
+  });
   $("#reset-search").addEventListener("click", () => {
-    category = "all";
+    activeSection = "all";
     $("#search-input").value = "";
-    renderFilters(); renderSections();
+    renderIndex(); renderSections();
     $("#search-input").focus({ preventScroll: true });
   });
   $("#close-entry").addEventListener("click", () => dialog.close());
